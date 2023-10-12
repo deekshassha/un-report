@@ -4,7 +4,7 @@ library(tidyverse)
 
 ##open the file
 
-gapminder_1997 <- read_csv("gapminder_1997.csv")
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 
 ##Argument-a function need to read the file for ex
 read_csv()
@@ -161,8 +161,7 @@ ggplot(data=gapminder_1997)+
   aes(color=continent)+
   scale_color_brewer(palette = "Set2")
 ##Find diffrent color codes and change "set2 to set 3...or so on then add size
-
-ggplot(data=gapminder_1997)+ 
+ggplot(data=gapminder_1997)+
 aes(x=gdpPercap,
 y=lifeExp, 
 color=continent,
@@ -173,6 +172,7 @@ title = "Do people in wealthy countries live longer?",
 size="Population (in millions)")+
  geom_point()+
 scale_color_brewer(palette = "Set1")
+ggsave("figures/gdpPercap_lifeExp.png")
 
 
 
