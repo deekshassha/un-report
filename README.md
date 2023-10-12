@@ -1,4 +1,2 @@
 ###Notes for Un Report
-eg-We plotted life expectancy over time.
-Each point represents a country.
-Continents are grouped by color.
+We plotted life expectancy over time.You should know that each point represents a country and that continents are are grouped by color.
