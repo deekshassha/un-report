@@ -40,12 +40,21 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 ```{r packages, include=FALSE}
 library(tidyverse)
 library(here)
+library(knitr)
 ```
  This report was prepared to the attention of the UN. it analyses the relationship between a country'sGDP, its life expectancy, and co2 emissions. Our goal is to detrmine to what degree a country's economic strentgh or weakness is related to its public health staus and its impact on climate pollution. We hypothesize that both life expectancy and co2 emission increase with country's GDP.
  
 ```{r data}
 gapminder_1997 <-read_csv(("data/gapminder_1997.csv"))
 ```
+```{r gdp_lifeexp_1997, echo=FALSE}
+```
+
+
+```{r gdp_lifeexp_1997, echo=FALSE}
+```
+
+
 ```{r gdp_lifeexp_1997, echo=FALSE}
 ggplot(data = gapminder_1997, aes(x = gdpPercap, y = lifeExp, color = continent, size = pop/1000000))+
   geom_point()+ 
@@ -54,3 +63,85 @@ ggplot(data = gapminder_1997, aes(x = gdpPercap, y = lifeExp, color = continent,
         title = "Do people in wealthy countries live longer?",
          size = "Population (in millions)")
 ```
+```{r}
+```
+The above plot shows the relationship between GDP per capita and life expectancy for total of"r n_countries" xxxx countries. For this set of coutries, economic wealth rangrd from a minimun of $xxxx to a mzximum of $xxx per capita.
+```{r}
+n_countries <- gapminder_1997 %>%
+  select(country) %>%
+  n_distinct()
+```
+```{r}
+n_countries
+minimum_gdp <-gapminder_1997 %>%
+  summarize(min(gdpPercap))%>%
+  round(digits = 1)
+```
+
+The above plot show the relationship netween Gddp per capiata and life expectancy for total fo r n countries . For thi set countries, economic wealth range from a minimus of "$ "r minimum_gdp" to a maxomum of $xxx per capita.
+
+
+```{r}
+n_countries <- gapminder_1997 %>%
+  select(country) %>%
+  n_distinct()
+  
+n_countries
+  
+maximum_gdp <-gapminder_1997 %>%
+   summarize(max(gdpPercap)) %>%
+   round(digits = 1)
+   
+maximum_gdp
+   
+```
+
+The above plot shows the relation between gdo and expectancy.
+
+|summary of data | HEADER2
+|mINIMUM GDP per capita | 'r minimum_gdp'|
+|Maximum GDP per capita | 'r maximum_gdp'|
+
+|summary of data        |
+|:----------------|--------------:|
+|Number of countries | 'r n_countries'|
+|Minim GDP per capita | ' r minimum_gdp'|
+|Maximum GDP per capita | 'r maximum_gdp'|
+
+
+
+
+```{r table}
+gapminder_1997 %>%
+  filter(continent =="Oceania") %>%
+  kable()
+```
+
+#BETd inhibits the cancer cell growth by jak-stat signaling 
+
+## Introduction
+
+## Material and methods
+
+  ###Cell line culture 
+
+  ### MTT assay
+
+      *Effect on tHP1
+      *CELL VIABILITY
+###Statistical Methods
+  My bulleted list
+  
+      * Fav lanugae is **R**
+      * The most useful function has been *save as*
+      * The next thing I want to learn is ***RNAseq analysis***
+  
+   Convert bullet list into number list
+   
+        1. Fav lanugae is **R**
+        2. The most useful function has been *save as*
+        3.The next thing I want to learn is ***RNAseq analysis***
+        4. This is my [favorite markdown cheatsheetfile:///C:/Users/dik12/Downloads/rmarkdown%20(1).pdf]
+   * R laungage 
+        *hypen*
+        **rnaseq analysis**
