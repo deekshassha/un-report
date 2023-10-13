@@ -102,17 +102,71 @@ gapminder_data %>%
   glimpse()
 
 ##
-gapminder_data %>%
+mysummary <- gapminder_data %>%
+  group_by(country) %>%
   filter(continent =="Asia") %>%
-  group_by(country)%>%
-  mutate(gdp =pop *gdpPercap)%>%
-  summarise(meanGDP =mean(gdp))
-mysummary
+  mutate(gdp = pop *gdpPercap)%>%
+  summarise(meanGDP = mean(gdp))
+  mysummary
+   view(mysummary)
 
+##3sleect a subset of column from a dataset
 
-###
+gapminder_data %>%
+  select(pop,year)
  
  
+ gapminder_data %>%
+    distinct(continent)
 
+
+###create a tibble with only country, continent
+ #year,lifexp
+ 
+ gapminder_data %>%
+   select(country,continent,year,lifeExp)
+ 
+ ##select helper funcion:starts-with ()
+ gapminder_data %>%
+   select(year,starts_with("c"))
+ ##ex
+ gapminder_data %>%
+   select(year,ends_with("p"))
+ gapminder_data %>%
+   select(continent,ends_with("p"))
+ gapminder_data %>%
+   select(continent,year,ends_with("p"))
+ 
+ 
+#for rows back to filter
+ 
+ ##change shape of data (reshaping)
+ gapminder_data %>%
+   select(country,continent,year,lifeExp)
+ 
+ ##pivot_wider (for making data wider)
+ gapminder_data %>%
+   select(country,continent,year,lifeExp) %>%
+   pivot_wider(names_from = year, values_from = lifeExp)
+ 
+## give name to newly develop data by prefix
+ widedata <- gapminder_data %>%
+   select(country,continent,year,lifeExp) %>%
+   pivot_wider(names_from = year, 
+               values_from = lifeExp,
+               names_prefix ='yr')
+ 
+ ## how to join data (joins)
+ 
+co2_data <-read_csv("data/co2-un-data.csv",skip =1 ) %>%
+   rename(country='...2')%>%
+   rename(year = Year)
+
+co2_data
+
+ joined <-left_join(gapminder_data, co2_data, 
+                    by = c("country", "year"))
+ view(joined)
+####R_markdown
 
 
